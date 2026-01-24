@@ -2,59 +2,391 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>TrackLore</title>
+  <title>TrackLore — Privacy, Terms & Contact</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="TrackLore — identify music from anime, movies, and TV shows. Privacy Policy, Terms & Conditions, and Contact." />
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0f0f14;
-      color: #ffffff;
-      text-align: center;
-      padding: 60px 20px;
+    :root{
+      --bg: #0f0f14;
+      --card: rgba(255,255,255,0.06);
+      --card2: rgba(255,255,255,0.04);
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.72);
+      --muted2: rgba(255,255,255,0.58);
+      --border: rgba(255,255,255,0.12);
+      --accent: #8b7cff;
+      --accent2:#5eead4;
+      --shadow: 0 18px 60px rgba(0,0,0,0.55);
     }
-    a {
-      color: #8b7cff;
+
+    *{ box-sizing:border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
+      background: radial-gradient(1200px 700px at 50% -10%, rgba(139,124,255,0.18), transparent 55%),
+                  radial-gradient(900px 600px at 10% 20%, rgba(94,234,212,0.12), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      padding: 44px 18px 70px;
+    }
+
+    .wrap{
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    header{
+      text-align: left;
+      margin-bottom: 18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom: 8px;
+    }
+
+    .logo{
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(139,124,255,0.95), rgba(94,234,212,0.85));
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    }
+
+    h1{
+      font-size: 28px;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .subtitle{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 70ch;
+    }
+
+    .topnav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin: 18px 0 26px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+      color: var(--text);
+      text-decoration:none;
+      font-weight:600;
+      font-size: 13px;
+    }
+
+    .pill:hover{
+      border-color: rgba(139,124,255,0.55);
+      background: rgba(139,124,255,0.08);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+      align-items:start;
+    }
+
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .card .inner{
+      padding: 18px 18px 14px;
+      text-align:left;
+    }
+
+    .card h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .card h3{
+      margin: 16px 0 6px;
+      font-size: 14px;
+      letter-spacing: -0.01em;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .card p, .card li{
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 10px;
+    }
+
+    .card ul{
+      padding-left: 18px;
+      margin: 8px 0 10px;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(255,255,255,0.10);
+      margin: 14px 0;
+    }
+
+    .aside{
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 16px;
+      text-align:left;
+    }
+
+    .aside h2{
+      margin: 0 0 10px;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .kv{
+      display:grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .row{
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .label{
+      font-size: 12px;
+      color: var(--muted2);
+      margin-bottom: 4px;
+    }
+
+    .value{
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    a{
+      color: var(--accent);
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
+    }
+    a:hover{ text-decoration: underline; }
+
+    .foot{
+      margin-top: 18px;
+      color: var(--muted2);
+      font-size: 12px;
+      text-align:left;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(139,124,255,0.14);
+      border: 1px solid rgba(139,124,255,0.35);
+      color: var(--text);
+      text-decoration:none;
+      font-weight:700;
+      font-size: 13px;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .btn:hover{
+      background: rgba(139,124,255,0.20);
+      border-color: rgba(139,124,255,0.55);
+      text-decoration:none;
+    }
+
+    .small{
+      font-size: 12px;
+      color: var(--muted2);
+      margin-top: 8px;
+    }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+      color: rgba(255,255,255,0.88);
+      background: rgba(0,0,0,0.25);
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
     }
   </style>
 </head>
+
 <body>
-  <h1>TrackLore</h1>
-  <p>Identify music from anime, movies, and TV shows.</p>
-  <h1>Privacy Policy</h1>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>TrackLore</h1>
+      </div>
+      <p class="subtitle">
+        TrackLore helps you identify music from <strong>anime</strong>, <strong>movies</strong>, and <strong>TV shows</strong> — and tells you where you’ve heard it.
+      </p>
 
-<p>TrackLore respects your privacy. This Privacy Policy explains how information is handled when using the TrackLore app.</p>
+      <nav class="topnav" aria-label="Page navigation">
+        <a class="pill" href="#contact">Contact</a>
+        <a class="pill" href="#privacy">Privacy Policy</a>
+        <a class="pill" href="#terms">Terms & Conditions</a>
+      </nav>
+    </header>
 
-<h2>Information Collection</h2>
-<p>TrackLore does not collect personally identifiable information. Audio used for music identification is processed only to identify songs and is not stored.</p>
+    <div class="grid">
+      <!-- Main content -->
+      <main class="card">
+        <div class="inner">
+          <section id="contact">
+            <h2>Contact</h2>
+            <p>
+              If you need help, have questions, or want to report an issue, you can contact TrackLore here:
+            </p>
+            <ul>
+              <li>Email: <a href="mailto:Joabbastidas@gmail.com">Joabbastidas@gmail.com</a></li>
+              <li>In-app: Use the contact option available within the app (if present in your version)</li>
+            </ul>
+            <p class="small">
+              Typical response time: within a few business days.
+            </p>
+          </section>
 
-<h2>Third-Party Services</h2>
-<p>The app uses Apple ShazamKit and music service links (Apple Music, Spotify). These services may handle data according to their own privacy policies.</p>
+          <div class="divider"></div>
 
-<h2>Data Storage</h2>
-<p>Detected songs may be saved locally on your device for history purposes. TrackLore does not store this data on external servers.</p>
+          <section id="privacy">
+            <h2>Privacy Policy</h2>
+            <p>
+              TrackLore respects your privacy. This policy explains how information is handled when you use the TrackLore app.
+            </p>
 
-<h2>Contact</h2>
-<p>For questions about this policy, please use the contact form available within the app.</p>
+            <h3>Information TrackLore Processes</h3>
+            <p>
+              TrackLore listens to audio for the purpose of identifying music. Audio is used only to detect and identify a track and is not stored by TrackLore.
+            </p>
 
-  
-<h1>Terms & Conditions</h1>
+            <h3>Data Stored on Your Device</h3>
+            <p>
+              TrackLore may save identified songs locally on your device so you can view your history. This history is stored on your device and is not uploaded by TrackLore.
+            </p>
 
-<p>By using TrackLore, you agree to the following terms.</p>
+            <h3>Third-Party Services</h3>
+            <p>
+              TrackLore may use Apple technologies such as ShazamKit and may provide outbound links to music services (for example, Apple Music or Spotify). These services may process data according to their own policies.
+            </p>
 
-<h2>Usage</h2>
-<p>TrackLore is provided for personal, non-commercial use.</p>
+            <h3>Changes to This Policy</h3>
+            <p>
+              We may update this policy from time to time. Updates will be posted on this page.
+            </p>
 
-<h2>Availability</h2>
-<p>Features may change or be discontinued at any time.</p>
+            <h3>Contact</h3>
+            <p>
+              Questions about privacy? Email <a href="mailto:Joabbastidas@gmail.com">Joabbastidas@gmail.com</a>.
+            </p>
+          </section>
 
-<h2>Liability</h2>
-<p>TrackLore is provided “as is” without warranties of any kind.</p>
+          <div class="divider"></div>
 
-<h2>Contact</h2>
-<p>For questions, please use the contact form available within the app.</p>
+          <section id="terms">
+            <h2>Terms & Conditions</h2>
+            <p>
+              By using TrackLore, you agree to the following terms.
+            </p>
 
-  
+            <h3>Use of the App</h3>
+            <p>
+              TrackLore is provided for personal, non-commercial use.
+            </p>
+
+            <h3>Availability</h3>
+            <p>
+              Features may change, be updated, or be discontinued at any time.
+            </p>
+
+            <h3>Disclaimer</h3>
+            <p>
+              TrackLore is provided “as is” without warranties of any kind. To the maximum extent permitted by law, we are not liable for any damages arising from use of the app.
+            </p>
+
+            <h3>Contact</h3>
+            <p>
+              Questions about these terms? Email <a href="mailto:Joabbastidas@gmail.com">Joabbastidas@gmail.com</a>.
+            </p>
+          </section>
+
+          <p class="foot">
+            Last updated: <span id="last-updated"></span>
+          </p>
+        </div>
+      </main>
+
+      <!-- Sidebar -->
+      <aside class="aside" aria-label="App information">
+        <h2>About TrackLore</h2>
+        <p class="small" style="margin-top:0;">
+          Quick details for users and App Review.
+        </p>
+
+        <div class="kv">
+          <div class="row">
+            <div class="label">App</div>
+            <div class="value">TrackLore</div>
+          </div>
+
+          <div class="row">
+            <div class="label">What it does</div>
+            <div class="value">Identifies music and shows where it appears (anime, movies, TV shows)</div>
+          </div>
+
+          <div class="row">
+            <div class="label">Support</div>
+            <div class="value"><a href="mailto:Joabbastidas@gmail.com">Joabbastidas@gmail.com</a></div>
+          </div>
+        </div>
+
+        <a class="btn" href="#contact">Contact Support</a>
+
+        <p class="small">
+          Tip: If you’re contacting support about a match, include the track title + artist shown in the app.
+        </p>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    // Simple “Last updated” stamp (no tracking; runs only in the browser)
+    const d = new Date();
+    const formatted = d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+    document.getElementById("last-updated").textContent = formatted;
+  </script>
 </body>
 </html>
